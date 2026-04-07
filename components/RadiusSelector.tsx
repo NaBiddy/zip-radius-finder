@@ -11,12 +11,12 @@ export default function RadiusSelector({ radius, onChange }: Props) {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <span className="text-sm text-gray-500">1 mile</span>
+        <span className="text-xs" style={{ color: "var(--text-2)" }}>1 mi</span>
         <div className="text-center">
-          <span className="text-3xl font-bold text-gray-900">{radius}</span>
-          <span className="text-gray-500 ml-1 text-sm">miles</span>
+          <span className="text-4xl font-bold tabular-nums" style={{ color: "var(--text-1)" }}>{radius}</span>
+          <span className="text-sm ml-1.5" style={{ color: "var(--text-2)" }}>miles</span>
         </div>
-        <span className="text-sm text-gray-500">100 miles</span>
+        <span className="text-xs" style={{ color: "var(--text-2)" }}>100 mi</span>
       </div>
 
       <input
@@ -26,22 +26,23 @@ export default function RadiusSelector({ radius, onChange }: Props) {
         step={1}
         value={radius}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#1D9E75] bg-gray-200"
+        className="w-full"
         style={{
-          background: `linear-gradient(to right, #1D9E75 0%, #1D9E75 ${radius}%, #e5e7eb ${radius}%, #e5e7eb 100%)`,
+          background: `linear-gradient(to right, #1D9E75 0%, #1D9E75 ${radius}%, var(--bg-raised) ${radius}%, var(--bg-raised) 100%)`,
         }}
       />
 
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-2">
         {PRESETS.map((p) => (
           <button
             key={p}
             onClick={() => onChange(p)}
-            className={`flex-1 min-w-[3.5rem] py-2 text-sm font-medium rounded-lg border transition-all duration-150
-              ${radius === p
-                ? "bg-[#1D9E75] text-white border-[#1D9E75] shadow-sm"
-                : "bg-white text-gray-600 border-gray-200 hover:border-[#1D9E75] hover:text-[#1D9E75]"
-              }`}
+            className="flex-1 py-2 text-xs font-semibold rounded-lg border transition-all duration-150"
+            style={{
+              background:   radius === p ? "#1D9E75"          : "var(--bg-raised)",
+              color:        radius === p ? "#fff"             : "var(--text-2)",
+              borderColor:  radius === p ? "#1D9E75"          : "var(--border)",
+            }}
           >
             {p} mi
           </button>

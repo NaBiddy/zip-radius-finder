@@ -3,20 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: #f9fafb;
-  --foreground: #111827;
+  --bg-base:    #0D1117;
+  --bg-card:    #161B22;
+  --bg-raised:  #21262D;
+  --border:     #30363D;
+  --text-1:     #E6EDF3;
+  --text-2:     #8B949E;
+  --green:      #1D9E75;
+  --green-dim:  rgba(29, 158, 117, 0.15);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background: var(--bg-base);
+  color: var(--text-1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-/* Custom range input styling */
+/* Range input */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  height: 8px;
+  height: 6px;
   border-radius: 9999px;
   outline: none;
   cursor: pointer;
@@ -25,26 +32,35 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #1D9E75;
   cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  border: 2px solid #0D1117;
+  box-shadow: 0 0 0 1px #1D9E75;
   transition: transform 0.1s;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
+  transform: scale(1.2);
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #1D9E75;
   cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  border: 2px solid #0D1117;
+}
+
+/* Leaflet tooltip styling */
+.leaflet-tooltip {
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+.leaflet-control-attribution a {
+  color: #1D9E75 !important;
 }
