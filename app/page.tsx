@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import UploadZone from "@/components/UploadZone";
 import RadiusSelector from "@/components/RadiusSelector";
 import ProgressBar from "@/components/ProgressBar";
@@ -34,6 +34,8 @@ export default function Home() {
   const [processStatus, setProcessStatus] = useState<"loading-db" | "processing" | "done">("loading-db");
   const [results, setResults] = useState<string[]>([]);
   const [inputCoords, setInputCoords] = useState<InputZipCoord[]>([]);
+  const [showTopBar, setShowTopBar] = useState(false);
+  const topBarTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleParsed = useCallback((result: ParseResult) => {
     setParseResult(result);
@@ -45,6 +47,7 @@ export default function Home() {
     setStage("processing");
     setProcessStatus("loading-db");
     setProgress({ processed: 0, total: parseResult.zips.length });
+    topBarTimer.current = setTimeout(() => setShowTopBar(true), 1000);
     try {
       const db = await loadZipDB();
       setInputCoords(getInputCoords(parseResult.zips, db));
@@ -58,9 +61,13 @@ export default function Home() {
       setProcessStatus("done");
       setProgress({ processed: parseResult.zips.length, total: parseResult.zips.length });
       setResults(found);
+      if (topBarTimer.current) clearTimeout(topBarTimer.current);
+      setShowTopBar(false);
       setStage("results");
     } catch (err) {
       console.error(err);
+      if (topBarTimer.current) clearTimeout(topBarTimer.current);
+      setShowTopBar(false);
       alert("Something went wrong. Check the console for details.");
       setStage("configure");
     }
@@ -73,6 +80,7 @@ export default function Home() {
     setProgress({ processed: 0, total: 0 });
     setResults([]);
     setInputCoords([]);
+    setShowTopBar(false);
     setProcessStatus("loading-db");
   }, []);
 
@@ -84,6 +92,21 @@ export default function Home() {
 
   return (
     <main className="min-h-screen" style={{ background: "var(--bg-base)" }}>
+
+      {/* Top loading bar — appears after 1s if still processing */}
+      <div
+        className="fixed top-0 left-0 right-0 z-50 h-[2px] transition-opacity duration-300"
+        style={{ opacity: showTopBar ? 1 : 0, pointerEvents: "none", background: "var(--border)" }}
+      >
+        <div
+          className="h-full transition-all duration-300 ease-out"
+          style={{
+            width: progress.total > 0 ? `${Math.round((progress.processed / progress.total) * 100)}%` : "15%",
+            background: "linear-gradient(to right, #1D9E75, #25c98f)",
+            boxShadow: "0 0 8px rgba(29,158,117,0.6)",
+          }}
+        />
+      </div>
 
       {/* Header */}
       <header style={{ background: "var(--bg-card)", borderBottom: "1px solid var(--border)" }} className="sticky top-0 z-10">
