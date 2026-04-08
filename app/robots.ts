@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://zip-radius-finder.vercel.app/sitemap.xml",
+    sitemap: "https://zipradius.xyz/sitemap.xml",
   };
 }
