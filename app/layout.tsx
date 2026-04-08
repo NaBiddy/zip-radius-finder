@@ -14,8 +14,19 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Zip Radius Finder — Meta Ad Targeting",
-  description: "Find all US zip codes within a given radius of your client zip codes for Meta ad targeting.",
+  title: "Zip Radius Finder — Find US Zip Codes Within Any Radius for Meta Ads",
+  description: "Free tool for advertising professionals. Upload your client zip codes, set a mile radius, and instantly download every US zip code within that radius — ready for Meta Ads Manager targeting.",
+  keywords: ["zip code radius", "meta ads targeting", "zip code finder", "facebook ads zip codes", "zip radius tool", "ad targeting zip codes", "US zip codes radius"],
+  openGraph: {
+    title: "Zip Radius Finder — Meta Ad Targeting Tool",
+    description: "Find every US zip code within a given radius of your client locations. Free, instant, browser-based — built for Meta ad campaigns.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Zip Radius Finder — Meta Ad Targeting Tool",
+    description: "Find every US zip code within a given radius of your client locations. Free, instant, browser-based.",
+  },
 };
 
 export default function RootLayout({
