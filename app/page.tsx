@@ -253,9 +253,26 @@ export default function Home() {
           </div>
         )}
 
-        <p className="text-center text-xs pb-4" style={{ color: "var(--text-2)" }}>
+        <p className="text-center text-xs" style={{ color: "var(--text-2)" }}>
           All processing happens in your browser · No data leaves your machine
         </p>
+
+        {/* Contact */}
+        <div className="flex flex-col items-center gap-3 pb-8">
+          <p className="text-sm font-medium" style={{ color: "var(--text-2)" }}>Contact me</p>
+          <a
+            href="https://www.linkedin.com/in/nathan-bidinger-59769712a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-opacity hover:opacity-75 active:opacity-50"
+            aria-label="LinkedIn profile"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+              <rect width="40" height="40" rx="8" fill="#0A66C2" />
+              <path fill="#fff" d="M13.5 16.5h-3v10h3v-10zm-1.5-1a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zm15 11h-3v-5c0-1.2-.02-2.75-1.68-2.75-1.68 0-1.93 1.31-1.93 2.66v5.09h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </main>
   );
