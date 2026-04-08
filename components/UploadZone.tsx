@@ -52,7 +52,7 @@ export default function UploadZone({ onParsed }: Props) {
         onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
         onDragLeave={() => setDragging(false)}
         onDrop={handleDrop}
-        className={`relative border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-200 select-none ${loading ? "pointer-events-none opacity-50" : ""}`}
+        className={`relative border-2 border-dashed rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-all duration-200 select-none ${loading ? "pointer-events-none opacity-50" : ""}`}
         style={{
           borderColor:     dragging ? "#1D9E75" : "var(--border)",
           background:      dragging ? "rgba(29,158,117,0.06)" : "var(--bg-raised)",

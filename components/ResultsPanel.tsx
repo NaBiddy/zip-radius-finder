@@ -35,17 +35,17 @@ export default function ResultsPanel({ results, inputCoords, inputCount, radius,
   return (
     <div className="space-y-5">
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         {[
-          { value: inputCount.toLocaleString(),  label: "Input zips",   accent: false },
-          { value: results.length.toLocaleString(), label: "Zips found", accent: true  },
-          { value: `${radius} mi`,               label: "Radius",       accent: false },
+          { value: inputCount.toLocaleString(),     label: "Input zips",  accent: false },
+          { value: results.length.toLocaleString(), label: "Zips found",  accent: true  },
+          { value: `${radius} mi`,                  label: "Radius",      accent: false },
         ].map(({ value, label, accent }) => (
-          <div key={label} className="rounded-xl p-4 text-center" style={{
-            background:   accent ? "rgba(29,158,117,0.08)" : "var(--bg-raised)",
-            border:       `1px solid ${accent ? "rgba(29,158,117,0.25)" : "var(--border)"}`,
+          <div key={label} className="rounded-xl p-3 sm:p-4 text-center" style={{
+            background: accent ? "rgba(29,158,117,0.08)" : "var(--bg-raised)",
+            border:     `1px solid ${accent ? "rgba(29,158,117,0.25)" : "var(--border)"}`,
           }}>
-            <div className="text-2xl font-bold tabular-nums" style={{ color: accent ? "#1D9E75" : "var(--text-1)" }}>{value}</div>
+            <div className="text-lg sm:text-2xl font-bold tabular-nums leading-tight" style={{ color: accent ? "#1D9E75" : "var(--text-1)" }}>{value}</div>
             <div className="text-xs mt-1" style={{ color: "var(--text-2)" }}>{label}</div>
           </div>
         ))}
@@ -74,7 +74,7 @@ export default function ResultsPanel({ results, inputCoords, inputCount, radius,
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download zip_radius_{radius}mi_results.csv
+            <span className="truncate">Download zip_radius_{radius}mi_results.csv</span>
           </button>
 
           {/* Preview */}

@@ -120,7 +120,7 @@ export default function Home() {
             </div>
             <span className="font-semibold text-sm" style={{ color: "var(--text-1)" }}>Zip Radius Finder</span>
           </div>
-          <span className="text-xs font-mono px-2 py-1 rounded" style={{ background: "var(--bg-raised)", color: "var(--text-2)", border: "1px solid var(--border)" }}>
+          <span className="hidden sm:inline text-xs font-mono px-2 py-1 rounded" style={{ background: "var(--bg-raised)", color: "var(--text-2)", border: "1px solid var(--border)" }}>
             Meta Ad Targeting
           </span>
         </div>
@@ -140,14 +140,14 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
               {[
                 { icon: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12", label: "Upload your CSV", desc: "Any CSV with a zip code column" },
                 { icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7", label: "Set a radius", desc: "From 1 to 100 miles" },
                 { icon: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4", label: "Download results", desc: "Clean CSV, sorted & deduped" },
               ].map(({ icon, label, desc }, i) => (
-                <div key={i} className="rounded-xl p-3.5 space-y-2" style={{ background: "var(--bg-raised)", border: "1px solid var(--border)" }}>
-                  <div className="w-7 h-7 rounded-lg bg-[#1D9E75]/10 flex items-center justify-center">
+                <div key={i} className="rounded-xl p-3 sm:p-3.5 flex sm:flex-col items-center sm:items-start gap-3 sm:gap-2" style={{ background: "var(--bg-raised)", border: "1px solid var(--border)" }}>
+                  <div className="w-8 h-8 sm:w-7 sm:h-7 rounded-lg bg-[#1D9E75]/10 flex items-center justify-center flex-shrink-0">
                     <svg className="w-4 h-4 text-[#1D9E75]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d={icon} />
                     </svg>
